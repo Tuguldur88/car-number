@@ -11,7 +11,7 @@ from tensorflow.keras.models import Sequential
 from PIL import Image
 from sklearn.model_selection import train_test_split
 
-image_path = '/home/togoldor/IA/img/car.jpg'
+image_path = '/home/togoldor/car-number/img/car.jpg'
 model = Sequential()
 
 y = []

@@ -9,21 +9,19 @@ import tensorflow as tf
 import tensorflow_datasets as tfds
 from tensorflow.keras.models import Sequential
 from PIL import Image
-from sklearn.model_selection import train_test_split
+mnist = tf.keras.datasets.mnist
 import cv2
 
-image_path = '/home/togoldor/IA/img/car.jpg'
 
-X = []
-y = []
+mnist = tf.keras.datasets.mnist
 
-# convert color image to 2D array (grayscale) & rescale
-data = cv2.imread(image_path,0) / 255.0
-label = 0 # label/class of the image
-X.append(data)
-y.append(label)
+(x_train, y_train),(x_test, y_test) = mnist.load_data()
 
-# loop trough all images ...
+x_train = tf.keras.utils.normalize(x_train, axis=1)
+x_test = tf.keras.utils.normalize(x_test, axis=1)
+print(x_test)
+new_model = tf.keras.models.load_model('epic_num_reader.model')
+predictions = new_model.predict(x_test)
 
-# split for training & testing
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33)
+print(np.argmax(predictions[0]))
+print(np.argmax(predictions[0]))

@@ -11,18 +11,18 @@ from tensorflow.keras.models import Sequential
 from PIL import Image
 
 
-model = Sequential()
-image_path = '/home/togoldor/IA/img/car.jpg'
+# model = Sequential()
+image_path = '/home/togoldor/car-number/img/car.jpg'
 
 
 image = tf.keras.preprocessing.image.load_img(image_path)
-input_arr = keras.preprocessing.image.img_to_array(image)
-input_arr = np.array([input_arr])  # Convert single image to a batch.
-predictions = model.predict(input_arr[None,:,:])
-print(input_arr)
-print("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww")
-print(predictions)
-print("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww")
+# input_arr = keras.preprocessing.image.img_to_array(image)
+# input_arr = np.array([input_arr])  # Convert single image to a batch.
+# predictions = model.predict(input_arr[None,:,:])
+# print(input_arr)
+# print("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww")
+# print(predictions)
+# print("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww")
 
 
 
@@ -32,7 +32,6 @@ print("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww")
 mnist = tf.keras.datasets.mnist
 print(mnist.load_data())
 print("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww")
-print(predictions)
 (x_train, y_train),(x_test, y_test) = mnist.load_data()
 # print(x_train[0])
 plt.imshow(x_train[0],cmap=plt.cm.binary)
@@ -45,28 +44,30 @@ x_test = tf.keras.utils.normalize(x_test, axis=1)
 # print(x_train[0])
 
 plt.imshow(x_train[0],cmap=plt.cm.binary)
-plt.show()
+# plt.show()
 
-model = tf.keras.models.Sequential()
+# model = tf.keras.models.Sequential()
 
-model.add(tf.keras.layers.Flatten())
+# model.add(tf.keras.layers.Flatten())
 
-model.add(tf.keras.layers.Dense(128, activation=tf.nn.relu))
+# model.add(tf.keras.layers.Dense(128, activation=tf.nn.relu))
 
-model.add(tf.keras.layers.Dense(128, activation=tf.nn.relu))
+# model.add(tf.keras.layers.Dense(128, activation=tf.nn.relu))
 
-model.add(tf.keras.layers.Dense(10, activation=tf.nn.softmax))
+# model.add(tf.keras.layers.Dense(10, activation=tf.nn.softmax))
 
-model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+# model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
-model.fit(x_train, y_train, epochs=3)
+# model.fit(x_train, y_train, epochs=3)
 
-val_loss, val_acc = model.evaluate(x_test, y_test)
-# print(val_loss)
-# print(val_acc)
+# val_loss, val_acc = model.evaluate(x_test, y_test)
+# # # print(val_loss)
+# # # print(val_acc)
 
-model.save('epic_num_reader.model')
+# model.save('epic_num_reader.model')
 new_model = tf.keras.models.load_model('epic_num_reader.model')
+print(new_model)
+print(x_test)
 predictions = new_model.predict(x_test)
 # print(predictions)
 
